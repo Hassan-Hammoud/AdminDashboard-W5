@@ -46,6 +46,15 @@
   --box-shadow: 0 2rem 3rem var(--color-light);
 }
 
+.dark-theme-variables {
+  --color-background: #181a1e;
+  --color-white: #202528;
+  --color-dark: #edeffd;
+  --color-dark-variant: #a3bdcc;
+  --color-light: rgba(0, 0, 0, 0.4);
+  --box-shadow: 0 2rem 3rem var(--color-light);
+}
+
 /* All variables   */
 
 * {
@@ -94,14 +103,17 @@ img {
 h1 {
   font-weight: 800;
   font-size: 1.8rem;
+  color: var(--color-dark);
 }
 
 h2 {
   font-size: 1.4rem;
+  color: var(--color-dark);
 }
 
 h3 {
   font-size: 0.87rem;
+  color: var(--color-dark);
 }
 
 h4 {
@@ -229,11 +241,13 @@ aside .sidebar a.active span {
   margin-left: calc(1rem - 3px);
 }
 
-aside .sidebar a:hover {
+aside .sidebar a:hover h3 {
   color: var(--color-primary);
 }
 
 aside .sidebar a:hover span {
+  color: var(--color-primary);
+
   margin-left: 1rem;
 }
 
@@ -243,6 +257,10 @@ aside .sidebar .message-count {
   font-size: 11px;
   padding: 2px 10px;
   border-radius: var(--border-radius-1);
+}
+
+aside .sidebar a:hover .message-count {
+  /* color: var(--color-dark); */
 }
 /************** END ASIDE BAR SECTION **************/
 
@@ -372,7 +390,7 @@ main .recent-orders {
 }
 
 main .recent-orders h2 {
-  margin-top: 0.8rem;
+  margin: 0.8rem 0;
 }
 
 main .recent-orders table {
@@ -387,6 +405,10 @@ main .recent-orders table {
 
 main .recent-orders table:hover {
   box-shadow: none;
+}
+
+main .recent-orders table th {
+  color: var(--color-dark);
 }
 
 main table tbody td {
@@ -445,6 +467,7 @@ main .recent-orders a {
   display: flex;
   align-items: center;
   justify-content: center;
+  color: var(--color-dark);
 }
 
 .right .theme-toggler span.active {
@@ -546,6 +569,11 @@ main .recent-orders a {
   justify-content: center;
 }
 
+.right .sales-analytics .add-product:hover {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
 .right .sales-analytics .add-product > div {
   display: flex;
   align-items: center;
@@ -554,6 +582,10 @@ main .recent-orders a {
 
 .right .sales-analytics .add-product > div h3 {
   font-weight: 600;
+}
+
+.right .sales-analytics .add-product > div span {
+  color: var(--color-dark);
 }
 /************** END SALES ANALYTICS SECTION **************/
 
@@ -618,7 +650,7 @@ main .recent-orders a {
 
   aside {
     position: fixed;
-    left: 0;
+    left: -100%;
     background: var(--color-white);
     width: 18rem;
     z-index: 3;
@@ -626,6 +658,13 @@ main .recent-orders a {
     height: 100vh;
     padding-right: var(--card-padding);
     display: none;
+    animation: showMenu 400ms ease forwards;
+  }
+
+  @keyframes showMenu {
+    to {
+      left: 0;
+    }
   }
 
   aside .logo {
